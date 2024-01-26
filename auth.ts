@@ -1,4 +1,4 @@
-import NextAuth, { type DefaultSession } from "next-auth";
+import NextAuth, { Session, type DefaultSession } from "next-auth";
 import GitHub from "next-auth/providers/github";
 import authConfig from "./auth.config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
@@ -67,7 +67,7 @@ export const {
      * @param token - The JWT token.
      * @returns The updated session object.
      */
-    async session({ token, session }) {
+    async session({ session, token } : {session: Session, token?: any}) {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
