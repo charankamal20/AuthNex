@@ -16,6 +16,19 @@ const transporter = nodemailer.createTransport({
 export const sendPasswordResetEmail = async (email: string, token: string) => {
   const customLink = `${domain}/auth/new-password?token=${token}`;
 
+  await new Promise((resolve, reject) => {
+    // verify connection configuration
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
+  });
+
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
@@ -23,17 +36,18 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     html: `<p>Click <a href="${customLink}">here</a> to reset your password.</p>`,
   };
 
-  await transporter.sendMail(
-    mailOptions,
-    function (error: Error | null, info: any) {
-      if (error) {
-        console.log(error);
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error(err);
+        reject(err);
       } else {
-        console.log("Email Sent");
-        return true;
+        console.log(info);
+        resolve(info);
       }
-    }
-  );
+    });
+  });
 };
 
 export const sendVerificationEmail = async (email: string, token: string) => {
@@ -71,8 +85,6 @@ export const sendVerificationEmail = async (email: string, token: string) => {
       }
     });
   });
-
-
 };
 
 /**
@@ -82,6 +94,20 @@ export const sendVerificationEmail = async (email: string, token: string) => {
  * @returns A promise that resolves to a boolean indicating whether the email was sent successfully.
  */
 export const sendTwoFactorEmail = async (email: string, token: string) => {
+
+  await new Promise((resolve, reject) => {
+    // verify connection configuration
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+        reject(error);
+      } else {
+        console.log("Server is ready to take our messages");
+        resolve(success);
+      }
+    });
+  });
+
   const mailOptions = {
     from: process.env.EMAIL,
     to: email,
@@ -89,15 +115,16 @@ export const sendTwoFactorEmail = async (email: string, token: string) => {
     html: `<p>Your two factor authentication code is ${token}</p>`,
   };
 
-  await transporter.sendMail(
-    mailOptions,
-    function (error: Error | null, info: any) {
-      if (error) {
-        console.log(error);
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error(err);
+        reject(err);
       } else {
-        console.log("Email Sent");
-        return true;
+        console.log(info);
+        resolve(info);
       }
-    }
-  );
+    });
+  });
 };
