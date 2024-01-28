@@ -13,4 +13,4 @@ function FormError({message} : FormErrorProps) {
   )
 }
 
-export default FormError
+export default FormError;

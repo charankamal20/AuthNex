@@ -4,6 +4,7 @@
 
 export const publicRoutes = [
     "/",
+    "/auth/new-verification"
 ];
 
 // Used for authentication
@@ -13,16 +14,18 @@ export const authRoutes = [
     "/auth/login",
     "/auth/register",
     "/auth/error",
+    "/auth/reset",
+    "/auth/new-password",
 ];
 
-/*
+/**
  * Prefixes for API authentication routes
  * Routes that start with this prefix are used for API authentication purposes
  * @type {string}
  */
 export const apiAuthPrefix = "/api/auth";
 
-/*
+/**
  * The default redirect path after a successful login
  * @type {string}
  */

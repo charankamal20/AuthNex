@@ -21,11 +21,13 @@ export default function Home() {
           🔐 Auth
         </h1>
         <p>A Simple Authentication Service</p>
-        <LoginButton>
-          <Button className="hover:text-black hover:border mt-4 bg-slate-800 text-white" variant={"secondary"} size={"lg"}>
-            Sign In
-          </Button>
-        </LoginButton>
+        <div>
+          <LoginButton mode="modal" asChild>
+            <Button className="hover:text-black hover:border mt-4 bg-slate-800 text-white" variant={"secondary"} size={"lg"}>
+              Sign In
+            </Button>
+          </LoginButton>
+        </div>
       </div>
     </main>
   );
