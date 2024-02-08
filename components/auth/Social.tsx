@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 function Social() {
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl");
+  const callbackUrl = searchParams?.get("callbackUrl");
   const onClick = (provider: "google" | "github") => {
     signIn(provider, { callbackUrl: callbackUrl || DEFAULT_LOGIN_REDIRECT });
   }
@@ -19,16 +19,16 @@ function Social() {
     <div className="flex items-center justify-center w-full gap-x-2">
       <Button
         size={"lg"}
-        className="w-full"
-        variant={"outline"}
+        className="w-full bg-gray-200"
+        variant={"secondary"}
         onClick={() => onClick("google")}
       >
         <FcGoogle className="h-5 w-5" />
       </Button>
       <Button
         size={"lg"}
-        className="w-full"
-        variant={"outline"}
+        className="w-full bg-gray-200"
+        variant={"secondary"}
         onClick={() => onClick("github")}
       >
         <FaGithub className="h-5 w-5" />

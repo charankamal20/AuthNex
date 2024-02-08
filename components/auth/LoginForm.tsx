@@ -30,10 +30,10 @@ export const LoginForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "";
+  const callbackUrl = searchParams?.get("callbackUrl") || "";
 
   const urlError =
-    searchParams.get("error") === "OAuthAccountNotLinked"
+    searchParams?.get("error") === "OAuthAccountNotLinked"
       ? "Email already in use with different provider"
       : "";
 
@@ -141,7 +141,7 @@ export const LoginForm = () => {
                         asChild
                         className="px-0 font-normal"
                       >
-                        <Link href="/auth/reset">Forgot Password?</Link>
+                        <Link className="text-zinc-300" href="/auth/reset">Forgot Password?</Link>
                       </Button>
                       <FormMessage />
                     </FormItem>
@@ -152,7 +152,7 @@ export const LoginForm = () => {
           </div>
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
-          <Button disabled={isPending} className="w-full" type="submit">
+          <Button disabled={isPending} className="w-full bg-transparent border-[0.5px] border-zinc-600 hover:bg-zinc-800" type="submit">
             {showTwoFactor ? "Verify" : "Login"}
           </Button>
         </form>

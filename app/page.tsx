@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { LoginButton } from '../components/auth/LoginButton';
+import { BackgroundBeams } from "@/components/ui/background-beams";
 
 const font = Poppins({
   subsets: ["latin-ext"],
@@ -10,25 +10,28 @@ const font = Poppins({
 
 export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-center bg-gray-50">
-      <div className="space-y-6 text-center">
+    <main className="h-screen w-full bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
+      <div className="z-10 space-y-6 text-center">
         <h1
-          className={cn(
-            "text-6xl font-semibold text-gray-800 drop-shadow-md",
-            font.className
-          )}
+          className="text-8xl font-bold text-gray-300 drop-shadow-md"
         >
-          🔐 Auth
+          AuthNeX
         </h1>
-        <p>A Simple Authentication Service</p>
+        <p className="font-semibold text-gray-400">Auth.js based Authentication Service.</p>
         <div>
           <LoginButton mode="modal" asChild>
-            <Button className="hover:text-black hover:border mt-4 bg-slate-800 text-white" variant={"secondary"} size={"lg"}>
+
+            <Button
+              className="hover:text-black cursor-pointer hover:border mt-4 bg-slate-800 text-white"
+              variant={"secondary"}
+              size={"lg"}
+            >
               Sign In
             </Button>
           </LoginButton>
         </div>
       </div>
+      <BackgroundBeams />
     </main>
   );
 }

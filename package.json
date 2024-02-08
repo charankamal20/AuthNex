@@ -1,5 +1,10 @@
 {
   "name": "nex-auth",
+  "author": "Charan Kamal Singh",
+  "license": "MIT",
+  "displayName": "AuthNex",
+  "description": "Auth.js based Authentication with Next.js and Prisma with Two-Factor Authentication.",
+  "icon": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/external-lock-baby-flatart-icons-outline-flatarticons.png",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -25,6 +30,7 @@
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "framer-motion": "^11.0.3",
     "next": "14.1.0",
     "next-auth": "^5.0.0-beta.5",
     "next-themes": "^0.2.1",
@@ -42,6 +48,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.14",

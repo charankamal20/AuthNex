@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
+import Link from "next/link";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -13,8 +14,8 @@ interface HeaderProps {
 function Header({ label }: HeaderProps) {
   return (
     <div className="flex w-full flex-col gap-y-4 items-center justify-center">
-      <h1 className={cn("text-3xl font-semibold", font.className)}>🔐 Auth</h1>
-      <p className="to-muted-foreground text-sm">{label}</p>
+      <Link className={cn("text-3xl font-bold", font.className)} href="/">AuthNex</Link>
+      <p className="to-muted-foreground font-semibold text-sm">{label}</p>
     </div>
   );
 }
