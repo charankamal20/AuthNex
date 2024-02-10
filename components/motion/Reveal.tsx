@@ -26,7 +26,7 @@ function Reveal({ children, width = "fit-content" }: RevealProps) {
         }}
         initial="hidden"
         animate={animation}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.5}}
       >
         {children}
       </motion.div>
